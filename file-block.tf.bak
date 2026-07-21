@@ -1,0 +1,38 @@
+
+
+
+resource "aws_instance" "example_file_block" {
+  ami           = "ami-0b6d9d3d33ba97d99"
+  instance_type = "t3.micro"
+  key_name = "terraform-key"
+  vpc_security_group_ids = ["sg-010c51323c2443886"]
+
+  provisioner "file" {
+    source      = "./test-instance1.txt"
+    destination = "/home/ubuntu/test-instance1.txt"
+
+    connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("./terraform-key.pem")
+      host        = self.public_ip
+    }
+  }
+}
+
+
+/*
+provisioner "file" {
+  source      = "conf/myapp.conf"
+  destination = "C:/App/myapp.conf"
+
+  connection {
+    type     = "winrm"
+    user     = "Administrator"
+    password = var.admin_password
+    host     = var.host
+  }
+}
+*/
+
+
