@@ -8,5 +8,5 @@ variable "https_port" {}
 variable "api_port" {}
 variable "api_ssl_port" {}
 variable "splunk_port" {
-  default = "8080"
+    default = "8080"
 }
