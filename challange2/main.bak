@@ -1,0 +1,17 @@
+
+
+resource "aws_iam_user" "userD" {
+  count = 5
+  # name = "user-${count.index}"
+#   name = var.userlist[count.index]
+}
+
+/*
+
+resource "aws_iam_user" "condition1" {
+  name = (var.env == "prod" && 1==1 ? "prod-user" : "non-prod-user")
+
+}
+
+
+*/
